@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { Draggable } from "react-beautiful-dnd";
 import { BsThreeDots } from "react-icons/bs";
+import AddTaskForm from "./AddTask";
 import Task from "./Task";
 
 interface SectionProps {
@@ -17,6 +19,7 @@ interface SectionProps {
   };
 }
 const Section: React.FC<SectionProps> = (props) => {
+  const [addFormOpen, setAddFormOpen] = useState(false);
   return (
     <>
       <div className="flex flex-row justify-between items-center mb-3">
@@ -40,7 +43,15 @@ const Section: React.FC<SectionProps> = (props) => {
           )}
         </Draggable>
       ))}
-      <div className="mt-4">Add a Task ...</div>
+      <div
+        className="mt-4"
+        onClick={() => {
+          setAddFormOpen(true);
+        }}
+      >
+        Add a Task ...
+      </div>
+      {addFormOpen && <AddTaskForm setAddFormOpen={setAddFormOpen} />}
     </>
   );
 };

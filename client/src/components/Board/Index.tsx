@@ -54,7 +54,6 @@ const Board: React.FC = () => {
           <BsPlus size={100} className="cursor-pointer" />
         </div>
       </DragDropContext>
-      {addFormOpen && <AddTaskForm setAddFormOpen={setAddFormOpen} />}
     </div>
   );
 };
