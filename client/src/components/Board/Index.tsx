@@ -1,12 +1,30 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BsPlus } from "react-icons/bs";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import MockData from "./../../MOCK_DATA.json";
 import Section from "./Section";
-import AddTaskForm from "./AddTask";
+
+export type NewTask = {
+  sectionIndex: number;
+  task: {
+    id: string;
+    title: string;
+    description: string;
+    deadline: string;
+    createdAt: string;
+    updatedAt: string;
+  };
+};
 const Board: React.FC = () => {
   const [data, setData] = useState(MockData);
-  const [addFormOpen, setAddFormOpen] = useState(true);
+
+  const addTaskHandler = (NewTask: NewTask) => {
+    setData((prev) => {
+      const newSections = [...prev];
+      newSections[NewTask.sectionIndex].tasks.push(NewTask.task);
+      return newSections;
+    });
+  };
 
   const onDragEnd = (result: any) => {
     if (!result.destination) return;
@@ -37,7 +55,7 @@ const Board: React.FC = () => {
     <div className="flex flex-row h-full w-full p-4 pt-8">
       <DragDropContext onDragEnd={onDragEnd}>
         <div className="flex min-w-full h-full overflow-scroll">
-          {data.map((section) => (
+          {data.map((section, index) => (
             <Droppable key={section.id} droppableId={section.id}>
               {(provided) => (
                 <div
@@ -45,7 +63,11 @@ const Board: React.FC = () => {
                   {...provided.droppableProps}
                   className="flex flex-col px-4 py-4 bg-slate-700 w-full min-w-[25vw] h-max m-4 rounded-md"
                 >
-                  <Section section={section} />
+                  <Section
+                    section={section}
+                    index={index}
+                    addTaskHandler={addTaskHandler}
+                  />
                   {provided.placeholder}
                 </div>
               )}

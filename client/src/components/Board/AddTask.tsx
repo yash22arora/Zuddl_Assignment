@@ -1,11 +1,19 @@
+import { v4 as uuidv4 } from "uuid";
 import { useReducer, useState } from "react";
 import Modal from "../Modal";
+import { NewTask } from "./Index";
 
 interface AddTaskProps {
   setAddFormOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  addTaskHandler: (newTask: NewTask) => void;
+  sectionIndex: number;
 }
 
-const AddTaskForm: React.FC<AddTaskProps> = ({ setAddFormOpen }) => {
+const AddTaskForm: React.FC<AddTaskProps> = ({
+  setAddFormOpen,
+  addTaskHandler,
+  sectionIndex,
+}) => {
   const formReducer = (state: any, event: any) => {
     return {
       ...state,
@@ -18,6 +26,21 @@ const AddTaskForm: React.FC<AddTaskProps> = ({ setAddFormOpen }) => {
     setformdata({
       name: e.target.name,
       value: e.target.value,
+    });
+  };
+
+  const onClick = (e: any) => {
+    e.preventDefault();
+    addTaskHandler({
+      sectionIndex: sectionIndex,
+      task: {
+        id: uuidv4(),
+        title: formdata.title,
+        description: formdata.description,
+        deadline: formdata.deadline,
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+      },
     });
   };
 
@@ -37,12 +60,15 @@ const AddTaskForm: React.FC<AddTaskProps> = ({ setAddFormOpen }) => {
           className="px-4 py-2 w-full mb-6 bg-slate-700 placeholder:text-xl text-xl outline-none"
           placeholder="Description"
           rows={5}
-          name="message"
+          name="description"
           onChange={(e) => handleChange(e)}
           required
         />
 
-        <button className="bg-slate-500 hover:bg-slate-600 p-3 px-24 mx-auto  text-white items-center rounded-md text-xl font-semibold">
+        <button
+          onClick={(e) => onClick(e)}
+          className="bg-slate-500 hover:bg-slate-600 p-3 px-24 mx-auto  text-white items-center rounded-md text-xl font-semibold"
+        >
           Submit
         </button>
       </form>

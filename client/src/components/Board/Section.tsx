@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Draggable } from "react-beautiful-dnd";
 import { BsThreeDots } from "react-icons/bs";
 import AddTaskForm from "./AddTask";
+import { NewTask } from "./Index";
 import Task from "./Task";
 
 interface SectionProps {
@@ -17,9 +18,33 @@ interface SectionProps {
       updatedAt: string;
     }[];
   };
+  index: number;
+  addTaskHandler: (newTask: any) => void;
 }
+
 const Section: React.FC<SectionProps> = (props) => {
   const [addFormOpen, setAddFormOpen] = useState(false);
+  // const [newTask, setNewTask] = useState({
+  //   sectionIndex: props.index,
+  //   task: {
+  //     id: "",
+  //     title: "",
+  //     description: "",
+  //     deadline: "",
+  //     createdAt: "",
+  //     updatedAt: "",
+  //   },
+  // });
+
+  // useEffect(() => {
+  //   console.log(newTask);
+  // }, [newTask]);
+
+  const addTaskHandler = (newTask: NewTask) => {
+    props.addTaskHandler(newTask);
+    setAddFormOpen(false);
+  };
+
   return (
     <>
       <div className="flex flex-row justify-between items-center mb-3">
@@ -51,7 +76,13 @@ const Section: React.FC<SectionProps> = (props) => {
       >
         Add a Task ...
       </div>
-      {addFormOpen && <AddTaskForm setAddFormOpen={setAddFormOpen} />}
+      {addFormOpen && (
+        <AddTaskForm
+          setAddFormOpen={setAddFormOpen}
+          addTaskHandler={addTaskHandler}
+          sectionIndex={props.index}
+        />
+      )}
     </>
   );
 };
