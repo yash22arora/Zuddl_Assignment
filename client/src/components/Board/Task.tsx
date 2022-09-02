@@ -4,6 +4,7 @@ import { BsTextParagraph } from "react-icons/bs";
 interface TaskProps extends React.HTMLAttributes<HTMLDivElement> {
   task: {
     id: string;
+    deadline: string;
     title: string;
     description: string;
     createdAt: string;

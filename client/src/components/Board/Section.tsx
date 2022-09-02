@@ -8,6 +8,7 @@ interface SectionProps {
     category: string;
     tasks: {
       id: string;
+      deadline: string;
       title: string;
       description: string;
       createdAt: string;
@@ -39,6 +40,7 @@ const Section: React.FC<SectionProps> = (props) => {
           )}
         </Draggable>
       ))}
+      <div className="mt-4">Add a Task ...</div>
     </>
   );
 };

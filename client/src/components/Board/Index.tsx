@@ -3,8 +3,11 @@ import { BsPlus } from "react-icons/bs";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import MockData from "./../../MOCK_DATA.json";
 import Section from "./Section";
+import AddTaskForm from "./AddTask";
 const Board: React.FC = () => {
   const [data, setData] = useState(MockData);
+  const [addFormOpen, setAddFormOpen] = useState(true);
+
   const onDragEnd = (result: any) => {
     if (!result.destination) return;
     const { source, destination } = result;
@@ -51,22 +54,9 @@ const Board: React.FC = () => {
           <BsPlus size={100} className="cursor-pointer" />
         </div>
       </DragDropContext>
+      {addFormOpen && <AddTaskForm setAddFormOpen={setAddFormOpen} />}
     </div>
   );
 };
 
 export default Board;
-
-{
-  /* {data.map((section) => {
-            <Droppable key={section.id} droppableId={section.id}>
-              {(provided) => (
-                <div {...provided.droppableProps} ref={provided.innerRef}>
-                  <Section key={section.id} section={section} />
-                </div>
-              )}
-            </Droppable>;
-            // return <Section key={section.id} section={section} />;
-          })}
-          <BsPlus size={100} className="cursor-pointer" /> */
-}
