@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Draggable } from "react-beautiful-dnd";
 import { BsThreeDots } from "react-icons/bs";
 import AddTaskForm from "./AddTask";
@@ -24,21 +24,6 @@ interface SectionProps {
 
 const Section: React.FC<SectionProps> = (props) => {
   const [addFormOpen, setAddFormOpen] = useState(false);
-  // const [newTask, setNewTask] = useState({
-  //   sectionIndex: props.index,
-  //   task: {
-  //     id: "",
-  //     title: "",
-  //     description: "",
-  //     deadline: "",
-  //     createdAt: "",
-  //     updatedAt: "",
-  //   },
-  // });
-
-  // useEffect(() => {
-  //   console.log(newTask);
-  // }, [newTask]);
 
   const addTaskHandler = (newTask: NewTask) => {
     props.addTaskHandler(newTask);

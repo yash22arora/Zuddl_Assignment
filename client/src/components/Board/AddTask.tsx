@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
-import { useReducer, useState } from "react";
+import { useReducer } from "react";
 import Modal from "../Modal";
 import { NewTask } from "./Index";
 

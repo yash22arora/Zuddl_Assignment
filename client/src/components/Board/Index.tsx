@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { BsPlus } from "react-icons/bs";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import MockData from "./../../MOCK_DATA.json";
