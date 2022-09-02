@@ -50,6 +50,13 @@
         "description": "Description 6",
         "createdAt": "2020-01-01",
         "updatedAt": "2020-01-01"
+      },
+      {
+        "id": 8,
+        "title": "Task 8",
+        "description": "Description 8",
+        "createdAt": "2020-01-01",
+        "updatedAt": "2020-01-01"
       }
     ]
   },
@@ -61,13 +68,6 @@
         "id": 7,
         "title": "Task 7",
         "description": "Description 7",
-        "createdAt": "2020-01-01",
-        "updatedAt": "2020-01-01"
-      },
-      {
-        "id": 8,
-        "title": "Task 8",
-        "description": "Description 8",
         "createdAt": "2020-01-01",
         "updatedAt": "2020-01-01"
       },

@@ -1,3 +1,4 @@
+import { BsPlus } from "react-icons/bs";
 import MockData from "./../../MOCK_DATA.json";
 import Section from "./Section";
 const Board: React.FC = () => {
@@ -7,6 +8,7 @@ const Board: React.FC = () => {
         {MockData.map((section) => {
           return <Section key={section.id} section={section} />;
         })}
+        <BsPlus size={100} />
       </div>
     </div>
   );
