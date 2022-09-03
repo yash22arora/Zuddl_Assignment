@@ -4,9 +4,9 @@
 
 <br>
 
-1.  For creating stages, we can use the '+' button on the top=right of the board, which could prompt a form to enter the title of the category and create an empty tasks array.
+1.  For creating stages, we can use the '+' button on the top-right of the board, which could prompt a form to enter the title of the category and create an empty tasks array.
 
-        We could send a post request for adding a new section in the database. Something like
+    We could send a post request for adding a new section in the database. Something like
 
     ` axios.post('https://api.trello.com/section/add', newSection)`
 
@@ -24,9 +24,10 @@
     ```
 
     For editing the previous sections, we might add an edit button on the top-right of the section, which would prompt a form to edit the title of the category.
-    Then, we can send a put request to update the category name in the database. Something like
+    Then, we can send a put request to update the category name in the database. Something like:
+    <br>
     ` axios.put('https://api.trello.com/section/edit', updatedSection)`
-
+    <br>
     where updatedSection would be something like:
 
     ```js
@@ -78,8 +79,10 @@
    ];
    ```
 
-   We can add a comment button on the bottom-right of the task, which would prompt a form to add a comment. Then, we can send a post request to add a new comment in the database. Something like
+   We can add a comment button on the bottom-right of the task, which would prompt a form to add a comment. Then, we can send a post request to add a new comment in the database. Something like:
+   <br>
    ` axios.post('https://api.trello.com/comment/add', newComment)`
+   <br>
    where newComment would be something like:
 
    ```js
