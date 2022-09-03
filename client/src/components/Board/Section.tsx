@@ -54,7 +54,7 @@ const Section: React.FC<SectionProps> = (props) => {
         </Draggable>
       ))}
       <div
-        className="mt-4"
+        className="mt-4 cursor-pointer"
         onClick={() => {
           setAddFormOpen(true);
         }}

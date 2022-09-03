@@ -49,6 +49,14 @@ const Board: React.FC = () => {
       data[sourceSectionIndex].tasks = sourceTasks;
       data[destinationSectionIndex].tasks = destinationTasks;
       setData(data);
+    } else {
+      const SectionIndex = data.findIndex((e) => e.id === source.droppableId);
+      const Section = data[SectionIndex];
+      const Tasks = [...Section.tasks];
+      const movedTask = Tasks.splice(source.index, 1);
+      Tasks.splice(destination.index, 0, movedTask[0]);
+      data[SectionIndex].tasks = Tasks;
+      setData(data);
     }
   };
   return (

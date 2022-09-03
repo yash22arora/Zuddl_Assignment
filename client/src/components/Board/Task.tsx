@@ -21,6 +21,9 @@ const Task: React.FC<TaskProps> = (props) => {
     <div
       className="flex flex-col p-4 rounded-md bg-slate-500 shadow-md my-3"
       {...props}
+      onClick={() => {
+        setExpanded((prev) => !prev);
+      }}
     >
       <span className="text-xl font-bold">{props.task.title}</span>
       <p
@@ -29,12 +32,7 @@ const Task: React.FC<TaskProps> = (props) => {
         {props.task.description}
       </p>
       <div className="flex flex-row">
-        <BsTextParagraph
-          className="cursor-pointer mt-3"
-          onClick={() => {
-            setExpanded((prev) => !prev);
-          }}
-        />
+        <BsTextParagraph className="cursor-pointer mt-3" />
       </div>
     </div>
   );
